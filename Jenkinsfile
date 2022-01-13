@@ -1,5 +1,5 @@
 pipeline {
-  agent { node {label 'master'}}
+  agent { node {label 'Built-In Node'}}
   environment {
     DOCKER_IMAGE = "19120257/19120257"
   }
