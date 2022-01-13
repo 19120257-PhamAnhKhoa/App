@@ -3,7 +3,9 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "19120257/19120257"
+    DOCKER_IMAGE = "nhtua/flask-docker"
+    DOCKER_USERNAME="darkhunter91001"
+    DOCKER_PASSWORD="DarkOrLight1!"
   }
 
   stages {
