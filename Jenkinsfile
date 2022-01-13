@@ -1,5 +1,5 @@
 pipeline {
-  agent {any}
+  agent any
   environment {
     DOCKER_IMAGE = "19120257/19120257"
   }
