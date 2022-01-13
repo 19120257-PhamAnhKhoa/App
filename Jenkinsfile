@@ -4,8 +4,6 @@ pipeline {
 
   environment {
     DOCKER_IMAGE = "19120257/19120257"
-    DOCKER_USERNAME="darkhunter91001"
-    DOCKER_PASSWORD="DarkOrLight1!"
   }
 
   stages {
