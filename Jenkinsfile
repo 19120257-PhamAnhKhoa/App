@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    DOCKER_IMAGE = "19120257/19120257"
+    DOCKER_IMAGE = "darkhunter91001/19120257"
   }
 
   stages {
@@ -12,7 +12,6 @@ pipeline {
       steps {
         bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
         bat "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
-        bat "docker image ls | grep ${DOCKER_IMAGE}"
         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             bat 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
             bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
