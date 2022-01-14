@@ -15,5 +15,4 @@ function App() {
     </div>
   );
 }
-//why it doesn't work i dont know
 export default App;
