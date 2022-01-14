@@ -5,17 +5,6 @@ pipeline {
   }
 
   stages {
-    stage("test"){
-      agent {
-          docker {
-            image 'node:lastest'
-            args '-u 0:0 -v /tmp:/root/.cache'
-          }
-      }
-      steps {
-        bat "npm test"
-      }
-    }
     stage("build") {
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
