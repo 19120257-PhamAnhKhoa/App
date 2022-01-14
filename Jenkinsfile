@@ -3,7 +3,6 @@ pipeline {
   environment {
     DOCKER_IMAGE = "19120257/19120257"
   }
-  
   stages {
     stage("build") {
       environment {
@@ -17,7 +16,7 @@ pipeline {
             bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             bat "docker push ${DOCKER_IMAGE}:latest"
 }
-        //clean to save disk
+        //clean to save diskd
         bat "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
         bat "docker image rm ${DOCKER_IMAGE}:latest"
       }
