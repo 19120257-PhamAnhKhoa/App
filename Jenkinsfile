@@ -12,12 +12,11 @@ pipeline {
       steps {
         bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
         bat "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
-        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'darkhunter91001', passwordVariable: 'DarkOrLight1!')]) {
-            bat 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhubPwd')]) {
+            bat 'docker login -u darkhunter91001 -p ${dockerhubPwd}'
             bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             bat "docker push ${DOCKER_IMAGE}:latest"
-        }
-
+}
         //clean to save disk
         bat "docker image rm ${DOCKER_IMAGE}:${DOCKER_TAG}"
         bat "docker image rm ${DOCKER_IMAGE}:latest"
