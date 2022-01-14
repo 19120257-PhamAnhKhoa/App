@@ -12,7 +12,7 @@ pipeline {
       steps {
         bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
         bat "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
-        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'darkhunter91001', passwordVariable: 'DarkOrLight1!')]) {
             bat 'echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin'
             bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             bat "docker push ${DOCKER_IMAGE}:latest"
