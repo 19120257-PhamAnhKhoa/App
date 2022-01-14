@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-    DOCKER_IMAGE = "darkhunter91001/19120257"
+    DOCKER_IMAGE = "19120257/19120257"
   }
 
   stages {
@@ -13,7 +13,7 @@ pipeline {
         bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} . "
         bat "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhubPwd')]) {
-            bat "docker login -u darkhunter91001 -p ${dockerhubPwd}"
+            bat "docker login -u 19120257 -p ${dockerhubPwd}"
             bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             bat "docker push ${DOCKER_IMAGE}:latest"
 }
