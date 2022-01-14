@@ -3,6 +3,7 @@ pipeline {
   environment {
     DOCKER_IMAGE = "19120257/19120257"
   }
+  
   stages {
     stage("build") {
       environment {
